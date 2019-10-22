@@ -7,6 +7,7 @@ import CircularDependencyPlugin from 'circular-dependency-plugin';
 import FileManagerWebpackPlugin from 'filemanager-webpack-plugin';
 
 const forGhPages = true;
+const pageTitle = 'Ethereum starter kit';
 
 function sortChunks(a: webpack.compilation.Chunk, b: webpack.compilation.Chunk): number {
   const order = ['app', 'vendors', 'runtime'];
@@ -65,6 +66,7 @@ const config: webpack.Configuration = {
       filename: 'index.html',
       template: 'index.html',
       chunksSortMode: sortChunks,
+      title: pageTitle,
     }),
     // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, new RegExp(LANGUAGES.join('|'))),
     new CircularDependencyPlugin({
@@ -80,12 +82,13 @@ const config: webpack.Configuration = {
             filename: '404.html',
             template: 'index.html',
             chunksSortMode: sortChunks,
+            title: pageTitle,
           }),
           new FileManagerWebpackPlugin({
             onEnd: {
               copy: [
                 {
-                  source: `src/assets/ghPageRoot/**`,
+                  source: `assets/ghPageRoot/**`,
                   destination: `build`,
                 },
               ],
