@@ -7,7 +7,7 @@ import routes from './routes';
 
 interface IProps {}
 
-function Application(_props: IProps) {
+function App(_props: IProps) {
   return (
     <Switch>
       {process.env.NODE_ENV !== 'production' && <Route exact path={routes.demo.getRoutePath()} component={DemoPage} />}
@@ -17,4 +17,4 @@ function Application(_props: IProps) {
   );
 }
 
-export default Application;
+export default App;

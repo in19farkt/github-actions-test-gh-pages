@@ -1,1 +1,1 @@
-//
+export * from './getErrorMsg';
